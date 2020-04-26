@@ -1,6 +1,6 @@
 # JavaScript Randon name generator
 
-Create a javascript script that emulates generates a random name from an APLI and uses Ajax
+Create a javascript script that generates a random name from an APLI and uses Ajax
 
 ## Starting 🚀
 

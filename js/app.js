@@ -16,7 +16,7 @@ function loadNames(e){
 		
 	let url = '';
 	// if theres an origin concat to the url
-	url += 'http://uinmaes.com.api/?';
+	url += 'http://uinames.com.api/?';
 
 	if (selectedOrigin !== '') {
 		url += `region=${selectedOrigin}&`;
@@ -29,7 +29,27 @@ function loadNames(e){
 	if (quanty !== '') {
 		url += `amount=${quanty}&`;
 	}
-
+	// init http request
 	const xhr = new XMLHttpRequest();
-	
+	// open conection
+	xhr.open('GET', url, true);
+	// data and tempolate render
+	xhr.onload = function(){
+		if (this.status === 200){
+			const names = JSON.parse(this.responseText);
+			//gen
+			let htmlNames = '<h2>Generated Names</h2>';
+			htmlNames += '<ul class="list">';
+			//print every name
+			names.forEach(function(names) {
+				htmlNames += `
+				<li>${names.name}</li>
+				`;
+			});
+			htmlNames += '</ul">'
+			document.getElementById('resultado').innerHTML = htmlNames;
+		}
+	}
+	//send xhr request
+	xhr.send();
 }
